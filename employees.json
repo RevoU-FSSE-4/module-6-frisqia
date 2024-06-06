@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "123456789",
+    "role": "Zookeeper",
+    "schedule": "Monday - Friday, 8:00 AM - 4:00 PM"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "phone": "987654321",
+    "role": "Veterinarian",
+    "schedule": "Tuesday - Saturday, 9:00 AM - 5:00 PM"
+  },
+  {
+    "id": 3,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "phone": "111222333",
+    "role": "Zookeeper",
+    "schedule": "Wednesday - Sunday, 10:00 AM - 6:00 PM"
+  },
+  {
+    "id": 4,
+    "name": "Bob Williams",
+    "email": "bob@example.com",
+    "phone": "444555666",
+    "role": "Trainer",
+    "schedule": "Monday - Friday, 10:00 AM - 6:00 PM"
+  },
+  {
+    "id": 5,
+    "name": "Emma Davis",
+    "email": "emma@example.com",
+    "phone": "777888999",
+    "role": "Zookeeper",
+    "schedule": "Monday - Wednesday, 7:00 AM - 3:00 PM"
+  }
+]

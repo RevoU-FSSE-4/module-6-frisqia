@@ -1,3 +1,9 @@
+import json
+
+# read file employees.json and save to variabel employees
+with open('employees.json', 'r') as file:
+    employees = json.load(file)
+
 zoo = [
     {
         "id": 1,
@@ -40,7 +46,7 @@ animal = [
     },
     {
         "id": 4,
-        "name": "comodo",
+        "name": "Comodo",
         "zoo_id": 3,
         "food": "Karnivora",
         "origin": "Nusa Tenggara Timur, Indonesia",
