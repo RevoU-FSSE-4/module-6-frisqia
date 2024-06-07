@@ -48,7 +48,7 @@ def update_animal(id):
         if animal_to_update:
             validate_animal_data(data)
             animal_to_update.update(data)
-            return jsonify({"message": "Animal updated successfully"}), 200
+            return jsonify({"message": "Animal updated successfully"})
         else:
             return jsonify({"error": "Animal not found"}), 404
     except Exception as e:
@@ -56,11 +56,15 @@ def update_animal(id):
 
 def delete_animal(id):
     global animal
-    animal = [a for a in animal if a['id'] != id]
-    return jsonify({"message": "Animal deleted successfully"}), 200
+    animal_to_delete = next((a for a in animal if a['id'] == id), None)
+    if animal_to_delete:
+        animal = [a for a in animal if a['id'] != id]
+        return jsonify({"message": "Animal deleted successfully"})
+    else:
+        return jsonify({"error": "Animal not found"}), 404
 
 def validate_animal_data(data):
     required_fields = ['name', 'species', 'food', 'origin']
     for field in required_fields:
-        if field not in data or not data[field]:
-            raise Exception(f"Please ensure you provide {field} for the animal")
+        if field not in data:
+            raise ValueError(f"{field} is required")

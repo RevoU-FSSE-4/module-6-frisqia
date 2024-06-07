@@ -1,5 +1,5 @@
 # Use new image python as base image
-FROM python:latest
+FROM python:3.12
 
 # Set environment variable PYTHONUNBUFFERED so output Python to print in the terminal without buffering
 ENV PYTHONUNBUFFERED=1
@@ -14,11 +14,11 @@ WORKDIR /app
 COPY . /app
 
 # Install dependencies from Pipfile
-RUN pip install pipenv
+RUN pip install -U pipenv
 RUN pipenv install --system --deploy
 
 # Expose port 5000
 EXPOSE 5000
 
-# Run Flask when container starts
-CMD ["python", "app.py"]
+# Run Flask with Gunicorn when container starts
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
