@@ -5,8 +5,8 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-flask-swagger-ui = "*"
 gunicorn = "*"
+flasgger = "*"
 
 [dev-packages]
 
