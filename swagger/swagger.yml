@@ -1,0 +1,238 @@
+openapi: 3.0.0
+info:
+  title: Zoo API
+  description: API for managing zoo animals and employees
+  version: 1.0.0
+
+paths:
+  /zoo:
+    get:
+      tags:
+        - animal
+      summary: Get list of zoos
+      description: Retrieve a list of all zoos.
+      responses:
+        "200":
+          description: A list of zoos
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /animals:
+    get:
+      tags:
+        - animal
+      summary: Get list of animals
+      description: Retrieve a list of all animals.
+      responses:
+        "200":
+          description: A list of animals
+          content:
+            application/json:
+              schema:
+                type: object
+
+    post:
+      tags:
+        - animal
+      summary: Create a new animal
+      description: Create a new animal entry.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                species:
+                  type: string
+                food:
+                  type: string
+                origin:
+                  type: string
+      responses:
+        "201":
+          description: Successfully created a new animal
+        "400":
+          description: Invalid input
+
+  /animals/{id}:
+    get:
+      tags:
+        - animal
+      summary: Get an animal by ID
+      description: Retrieve an animal by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: An animal
+        "404":
+          description: Animal not found
+
+    put:
+      tags:
+        - animal
+      summary: Update an animal by ID
+      description: Update an animal entry by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                species:
+                  type: string
+                food:
+                  type: string
+                origin:
+                  type: string
+      responses:
+        "200":
+          description: Animal updated successfully
+        "400":
+          description: Invalid input
+        "404":
+          description: Animal not found
+
+    delete:
+      tags:
+        - animal
+      summary: Delete an animal by ID
+      description: Delete an animal entry by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Animal deleted successfully
+
+  /employees:
+    get:
+      tags:
+        - employee
+      summary: Get list of employees
+      description: Retrieve a list of all employees.
+      responses:
+        "200":
+          description: A list of employees
+          content:
+            application/json:
+              schema:
+                type: object
+
+    post:
+      tags:
+        - employee
+      summary: Create a new employee
+      description: Create a new employee entry.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                role:
+                  type: string
+                schedule:
+                  type: string
+      responses:
+        "201":
+          description: Successfully created a new employee
+        "400":
+          description: Invalid input
+
+  /employees/{id}:
+    get:
+      tags:
+        - employee
+      summary: Get an employee by ID
+      description: Retrieve an employee by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: An employee
+        "404":
+          description: Employee not found
+
+    put:
+      tags:
+        - employee
+      summary: Update an employee by ID
+      description: Update an employee entry by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                role:
+                  type: string
+                schedule:
+                  type: string
+      responses:
+        "200":
+          description: Employee updated successfully
+        "400":
+          description: Invalid input
+        "404":
+          description: Employee not found
+
+    delete:
+      tags:
+        - employee
+      summary: Delete an employee by ID
+      description: Delete an employee entry by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Employee deleted successfully
