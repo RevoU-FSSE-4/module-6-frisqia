@@ -1,5 +1,5 @@
 # Use new image python as base image
-FROM python:3.12-slim
+FROM --platform=linux/arm64 python:3.12-slim
 
 # Set environment variable PYTHONUNBUFFERED so output Python to print in the terminal without buffering
 ENV PYTHONUNBUFFERED=1
