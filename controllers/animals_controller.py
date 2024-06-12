@@ -1,6 +1,15 @@
 from flask import jsonify, request
 from db import zoo, animal
 
+class CustomException(Exception):
+    code = 403
+    description = "Forbidden"
+
+def validate_animal_data(data):
+    if not data.get('name'):
+        raise CustomException("Animal name is required")
+    return True
+
 def get_zoo():
     """
     Get list of zoos
@@ -161,3 +170,4 @@ def validate_animal_data(data):
     for field in required_fields:
         if field not in data or not data[field]:
             raise Exception(f"Please ensure you provide {field} for the animal")
+

@@ -18,7 +18,7 @@ RUN pip install -U pipenv
 RUN pipenv install --deploy
 
 # Expose port 5000
-EXPOSE 5000
+EXPOSE 8080
 
 # Run Flask with Gunicorn when container starts
-CMD ["pipenv","run","gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["pipenv","run","gunicorn", "-b", "0.0.0.0:8080", "app:app"]

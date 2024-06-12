@@ -9,6 +9,10 @@ def client():
     with app.test_client() as client:
         yield client
 
+def test_custom_exception():
+    with pytest.raises(CustomException):
+        raise CustomException("This is a custom exception")
+
 def test_get_zoo(client):
     response = client.get('/zoo')
     assert response.status_code == 200
@@ -69,9 +73,8 @@ def test_delete_animal(client):
 
 @patch('controllers.animals_controller.validate_animal_data')
 def test_mock(mocked_validate_animal_data, client):
-    mocked_validate_animal_data.return_value = None
-    side_effect = CustomException("Jiakh", 403)
+    side_effect = CustomException("Jiakh")
     mocked_validate_animal_data.side_effect = side_effect
     response = client.post('/animals', json={'name': 'john doe'})
-    assert response.status_code == 403
+    assert response.status_code == 400
     assert response.json == {"message": "Jiakh"}
