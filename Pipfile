@@ -9,6 +9,8 @@ gunicorn = "*"
 flasgger = "*"
 pytest = "*"
 requests = "*"
+pyjwt = "*"
+jwt = "*"
 
 [dev-packages]
 

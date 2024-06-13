@@ -193,7 +193,7 @@ def test_create_animal_empty_data(client):
 def test_create_animal_invalid_data_types(client):
     new_animal = {
         "name": "Lion",
-        "species": 123,  # Should be a string
+        "species": 123,  
         "food": "Meat",
         "origin": "Africa"
     }
@@ -224,7 +224,7 @@ def test_update_animal_non_existent(client):
 
 def test_update_animal_modify_id(client):
     updated_animal = {
-        "id": 2,  # Trying to modify ID
+        "id": 2,  
         "name": "Lioness",
         "species": "Mamalia",
         "food": "Meat",

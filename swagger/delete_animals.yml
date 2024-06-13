@@ -1,0 +1,15 @@
+paths:
+  /animals/{id}:
+    delete:
+      tags:
+        - zoo summary
+      description: Remove animals by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Animal successfully deleted

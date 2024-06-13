@@ -1,0 +1,16 @@
+paths:
+  /employees/{id}:
+    delete:
+      tags:
+        - employee summary
+      description: Delete employees by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Employee successfully deleted
+

@@ -1,0 +1,34 @@
+paths:
+  /animals/{id}:
+    put:
+      tags:
+        - zoo summary
+      description: Update animals by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                species:
+                  type: string
+                food:
+                  type: string
+                origin:
+                  type: string
+      responses:
+        "200":
+          description: Successfully created a new animal
+        "400":
+          description: Invalid input
+        "404":
+          description: Animals not found

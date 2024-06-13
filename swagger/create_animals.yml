@@ -1,0 +1,26 @@
+paths:
+  /animals:
+    post:
+      tags:
+        - zoo summary
+      description: create a new animal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                species:
+                  type: string
+                food:
+                  type: string
+                origin:
+                  type: string
+      responses:
+        "201":
+          description: Successfully created a new animal
+        "400":
+          description: Invalid input

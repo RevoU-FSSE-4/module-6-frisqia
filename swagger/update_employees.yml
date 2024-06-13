@@ -1,0 +1,36 @@
+paths:
+  /employees/{id}:
+    put:
+      tags:
+        - employee summary
+      description: Update employees by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                role:
+                  type: string
+                schedule:
+                  type: string
+      responses:
+        "200":
+          description: Employee updated successfully
+        "400":
+          description: Invalid input
+        "404":
+          description: Employee not found
