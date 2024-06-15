@@ -1,11 +1,5 @@
 import json
 import pytest
-from unittest.mock import patch
-from controllers.employees_controller import CustomException
-
-def test_custom_exception():
-    with pytest.raises(CustomException):
-        raise CustomException("This is a custom exception")
 
 def test_get_employees(client):
     response = client.get('/employees')

@@ -1,8 +1,6 @@
 from flask import jsonify, request
 from db import zoo, animal
 from flasgger import swag_from
-import copy
-import sys
 import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
