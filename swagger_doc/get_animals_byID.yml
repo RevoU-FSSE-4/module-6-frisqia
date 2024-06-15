@@ -1,0 +1,32 @@
+Get a list of zoo by ID
+---
+tags:
+  - zoo
+description: Get a list of zoo by ID
+parameters:
+  - name: id
+    in: path
+    required: true
+    schema:
+    type: integer
+responses:
+  200:
+    description: Animal
+    content:
+    application/json:
+    schema:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      zoo_id:
+        type: integer
+      food:
+        type: string
+      origin:
+        type: string
+  404:
+    description: Animal not found
+

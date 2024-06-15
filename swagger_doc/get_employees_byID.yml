@@ -1,0 +1,16 @@
+Get employees by ID
+---
+tags:
+  - employees
+parameters:
+  - name: id
+    in: path
+    required: true
+    description: ID of the employee
+    schema:
+      type: integer
+responses:
+  200:
+   description: An employee
+  404:
+   description: Employee not found

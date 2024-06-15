@@ -1,15 +1,10 @@
-Update an employee by ID
+Create a new employee
 ---
 tags:
   - employees
 parameters:
-  - name: id
-    in: path
-    type: integer
-    required: true
-    description: ID of the employee
   - in: body
-    name: body
+    name: create
     required: true
     schema:
       type: object
@@ -25,9 +20,7 @@ parameters:
         schedule:
           type: string
 responses:
-  200:
-    description: Employee updated successfully
+  201:
+    description: Successfully created a new employee
   400:
     description: Invalid input
-  404:
-    description: Employee not found

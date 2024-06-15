@@ -1,0 +1,14 @@
+Delete an animal by ID
+---
+tags:
+  - zoo
+parameters:
+  - name: id
+    in: path
+    required: true
+    description: ID of the animal
+    schema:
+      type: integer
+responses:
+  200:
+    description: Animal successfully deleted

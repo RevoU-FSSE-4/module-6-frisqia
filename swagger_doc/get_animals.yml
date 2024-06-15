@@ -1,0 +1,29 @@
+Get list of animals
+---
+tags:
+   - zoo
+responses:
+  200:
+    description: a list of animals
+    content:
+    application/json:
+    schema:
+    type: object
+    properties:
+      animals:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          zoo_id:
+            type: integer
+          food:
+            type: string
+          origin:
+            type: string
+
+                          

@@ -1,13 +1,7 @@
 import json
 import pytest
 from unittest.mock import patch
-from app import app
 from controllers.animals_controller import CustomException
-
-@pytest.fixture
-def client():
-    with app.test_client() as client:
-        yield client
 
 def test_custom_exception():
     with pytest.raises(CustomException):

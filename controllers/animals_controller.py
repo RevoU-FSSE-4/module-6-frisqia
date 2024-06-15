@@ -1,13 +1,10 @@
-from flask import Blueprint,jsonify, request
+from flask import jsonify, request
 from db import zoo, animal
 from flasgger import swag_from
 import copy
 import sys
 import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
-
-animals_bp = Blueprint('animal', __name__)
 
 class CustomException(Exception):
     code = 403
@@ -18,76 +15,25 @@ def validate_animal_data(data):
         raise CustomException("Animal name is required")
     return True
 
-@animals_bp.get('/zoo')
+
 @swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'get_zoo.yml'))
 def get_zoo():
-    # """
-    # Get list of zoos
-    # ---
-    # responses:
-    #   200:
-    #     description: A list of zoos
-    # """
     return jsonify({"zoo": zoo}) ,200
 
+@swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'get_animals.yml'))
 def get_animals():
-    """
-    Get list of animals
-    ---
-    responses:
-      200:
-        description: A list of animals
-    """
     return jsonify({"animals": animal}), 200
 
+@swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'get_animals_byID.yml'))
 def get_animal(id):
-    """
-    Get an animal by ID
-    ---
-    parameters:
-      - name: id
-        in: path
-        type: integer
-        required: true
-        description: ID of the animal
-    responses:
-      200:
-        description: An animal
-      404:
-        description: Animal not found
-    """
     animal_found = next((a for a in animal if a['id'] == id), None)
     if animal_found:
         return jsonify(animal_found)
     else:
         return jsonify({"error": "Animal not found"}), 404
 
-# @animals_bp.route('/animals', methods=['POST'])
+@swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'create_animals.yml'))
 def create_animal():
-    """
-    Create a new animal
-    ---
-    parameters:
-      - in: body
-        name: animals
-        required: true
-        schema:
-          type: object
-          properties:
-            name:
-              type: string
-            species:
-              type: string
-            food:
-              type: string
-            origin:
-              type: string
-    responses:
-      201:
-        description: Successfully created a new animal
-      400:
-        description: Invalid input
-    """
     try:
         data = request.get_json()
         validate_animal_data(data)
@@ -114,38 +60,8 @@ def create_animal():
     except Exception as e:
         return jsonify({"message": str(e)}), 400
 
+@swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'update_animals.yml'))
 def update_animal(id):
-    """
-    Update an animal by ID
-    ---
-    parameters:
-      - name: id
-        in: path
-        type: integer
-        required: true
-        description: ID of the animal
-      - in: body
-        name: body
-        required: true
-        schema:
-          type: object
-          properties:
-            name:
-              type: string
-            species:
-              type: string
-            food:
-              type: string
-            origin:
-              type: string
-    responses:
-      200:
-        description: Animal updated successfully
-      400:
-        description: Invalid input
-      404:
-        description: Animal not found
-    """
     try:
         data = request.get_json()
         animal_to_update = next((a for a in animal if a['id'] == id), None)
@@ -158,20 +74,8 @@ def update_animal(id):
     except Exception as e:
         return jsonify({"message": str(e)}), 400
 
+@swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'delete_animals.yml'))
 def delete_animal(id):
-    """
-    Delete an animal by ID
-    ---
-    parameters:
-      - name: id
-        in: path
-        type: integer
-        required: true
-        description: ID of the animal
-    responses:
-      200:
-        description: Animal deleted successfully
-    """
     global animal
     animal = [a for a in animal if a['id'] != id]
     return jsonify({"message": "Animal deleted successfully"}), 200

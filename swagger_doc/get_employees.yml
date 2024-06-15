@@ -1,0 +1,9 @@
+Get a list of employees
+---
+tags:
+  - employees
+responses:
+  200:
+    description: List of employees
+  400:
+    description: There are no registered employees yet
