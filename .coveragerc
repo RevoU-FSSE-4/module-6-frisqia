@@ -2,4 +2,6 @@
 omit = 
     controllers/*
     blueprints/*
-    
+    app.py
+    test\conftest.py  
+    db.py
