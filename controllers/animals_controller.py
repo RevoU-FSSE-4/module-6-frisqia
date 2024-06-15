@@ -1,5 +1,13 @@
-from flask import jsonify, request
+from flask import Blueprint,jsonify, request
 from db import zoo, animal
+from flasgger import swag_from
+import copy
+import sys
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+animals_bp = Blueprint('animal', __name__)
 
 class CustomException(Exception):
     code = 403
@@ -10,15 +18,17 @@ def validate_animal_data(data):
         raise CustomException("Animal name is required")
     return True
 
+@animals_bp.get('/zoo')
+@swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'get_zoo.yml'))
 def get_zoo():
-    """
-    Get list of zoos
-    ---
-    responses:
-      200:
-        description: A list of zoos
-    """
-    return jsonify({"zoo": zoo})
+    # """
+    # Get list of zoos
+    # ---
+    # responses:
+    #   200:
+    #     description: A list of zoos
+    # """
+    return jsonify({"zoo": zoo}) ,200
 
 def get_animals():
     """
@@ -28,7 +38,7 @@ def get_animals():
       200:
         description: A list of animals
     """
-    return jsonify({"animals": animal})
+    return jsonify({"animals": animal}), 200
 
 def get_animal(id):
     """
@@ -52,13 +62,14 @@ def get_animal(id):
     else:
         return jsonify({"error": "Animal not found"}), 404
 
+# @animals_bp.route('/animals', methods=['POST'])
 def create_animal():
     """
     Create a new animal
     ---
     parameters:
       - in: body
-        name: body
+        name: animals
         required: true
         schema:
           type: object
