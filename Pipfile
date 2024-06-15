@@ -11,6 +11,7 @@ pytest = "*"
 requests = "*"
 pyjwt = "*"
 jwt = "*"
+coverage = "*"
 
 [dev-packages]
 
