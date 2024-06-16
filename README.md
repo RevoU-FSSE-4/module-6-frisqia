@@ -82,3 +82,16 @@
         Buat script menjadi executable (jika belum), dan kemudian jalankan pada terminal:   
         `chmod +x build.sh`
         `./build.sh`
+
+8. ## Unit testing 
+      adalah salah satu jenis pengujian perangkat lunak di mana bagian terkecil dari aplikasi, yang disebut unit, diuji secara individual dan terisolasi dari bagian lainnya. Unit biasanya merujuk pada fungsi, metode, atau kelas di dalam kode. Tujuan utama dari unit testing adalah untuk memastikan bahwa setiap unit kode bekerja sesuai dengan yang diharapkan.
+   ## Fungsi Unit Testing
+   - Validasi Kode: Memastikan bahwa setiap unit kode berfungsi dengan benar.
+   - Deteksi Bug Lebih Awal: Membantu menemukan bug lebih awal dalam proses pengembangan.
+   - Dokumentasi: Berfungsi sebagai dokumentasi tambahan untuk kode.
+   - Refactoring Aman: Memungkinkan pengembang untuk merombak kode dengan percaya diri karena tes yang ada dapat memastikan bahwa perubahan tidak merusak fungsi yang sudah ada.
+   - Meningkatkan Desain Kode: Membantu dalam membuat kode yang lebih modular dan terstruktur dengan baik.
+
+     untuk menjalankannya : 
+   `pipenv shell`
+   `python -m unittest file.py`
