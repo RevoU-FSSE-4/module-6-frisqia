@@ -1,6 +1,3 @@
-import json
-import pytest
-
 def test_get_employees(client):
     response = client.get('/employees')
     assert response.status_code == 200

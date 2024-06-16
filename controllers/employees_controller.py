@@ -6,6 +6,15 @@ from flasgger import swag_from
 current_dir = os.path.dirname(os.path.abspath(__file__))
 # # parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 
+class CustomException(Exception):
+    code = 403
+    description = "Forbidden"
+
+def validate_employees_data(data):
+    if not data.get('name'):
+        raise CustomException("Employees name is required")
+    return True
+
 
 @swag_from(os.path.join(current_dir, '..', 'swagger_doc', 'get_employees.yml'))
 def get_employees():

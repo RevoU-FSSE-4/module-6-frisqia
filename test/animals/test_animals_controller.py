@@ -228,4 +228,3 @@ def test_update_animal_modify_id(client):
     assert response.status_code == 404
     assert 'error' in response.json
     assert response.json['error'] == "Animal not found"
-

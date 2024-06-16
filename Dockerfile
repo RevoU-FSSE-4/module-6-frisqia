@@ -12,6 +12,7 @@ WORKDIR /app
 
 # Copy all files from directory project app in docker container
 COPY . /app
+COPY Pipfile Pipfile.lock
 
 # Install dependencies from Pipfile
 RUN pip install -U pipenv
@@ -21,4 +22,4 @@ RUN pipenv install --deploy
 EXPOSE 8080
 
 # Run Flask with Gunicorn when container starts
-CMD ["pipenv","run","gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+CMD ["pipenv", "run", "gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "app:app"]
